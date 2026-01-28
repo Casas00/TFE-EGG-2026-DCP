@@ -24,6 +24,30 @@
       - Interactive Behavior is located in JS modules under src/
     -->
 
+  <!-- ============================= 
+              APPLICATION HEADER
+      ============================= -->
+
+      <!-- Application Header 
+            Institucional identtiy bar.
+            Contains CTTC logo and viewer title.
+            Styling handled in style.css 
+      -->
+      <header id="app-header">
+
+        <!-- Institucional Logo-->
+         <div id="header-logo">
+            <img src="/public/logo-cttc.png" alt="CTTC logo">
+         </div>
+
+         <!-- Application Header -->
+          <div id="header-title">
+            <h1>CTTC Data Viewer</h1>
+          </div>
+
+      </header>
+    
+
     <!-- ============================= 
               MAIN VISUAL CONTAINER 
          ============================= -->
@@ -32,94 +56,94 @@
            The Map creation in src/map/createMap.js
            The addition of the controls and elements in main.js 
       -->
-      <div id="map"></div>
+      <div id="map">
 
-      <!-- Timeline Control,
-           logic handled in src/...
-           Shown only when a temporal raster layer is active.
-           The 'hidden-control' class is toggled via JS.
-      -->
-      <div id="timeline-control" class="hidden-control">
-        <h3>Línea de Tiempo (Ortofoto 1992)</h3>
-        <p>Aquí iria el texto, boton, o lo que sea</p>
-        <input type="range" style="width: 100%;">
-      </div>
-      
-      <!-- Mouse Position Track
-           Update continuously in src/controls/mousePositionControl.js
-      -->
-      <div id="mouse-position"></div>
-
-      <!-- Popup
-           GetFeatureInfo logic handled in src/interactions/popup.js
-      -->
-      <div id="popup" class="ol-popup">
-        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-        <div id="popup-content"></div>
-      </div>
-
-      <!-- DrawTools
-           Logic handled in src/controls/drawTools.js.
-           Visibilitbiey controlled by JS via he `hidden-control` class 
-      -->
-      <div id="draw-container">
-        <div id="draw-tools" class="hidden-control">
-          <button id="draw-point" title="Punto"><i class="fa-solid fa-location-dot"></i></button>
-          <button id="draw-line" title="Polilínea"><i class="fa-solid fa-route"></i></button>
-          <button id="draw-polygon" title="Polígono"><i class="fa-solid fa-draw-polygon"></i></button>
-          <button id="draw-clip" title="Recortar Mapa"><i class="fa-solid fa-scissors"></i></button>
-          <button id="draw-clear" title="Borrar Todo" style="background-color: #d90429;"><i class="fa-solid fa-trash"></i></button>
-        </div>
-        <button id="draw-toggle-button" title="Herramientas de Dibujo">
-          <i class="fa-solid fa-pencil"></i>
-        </button>
-      </div>
-
-      <!-- Gallery Base Maps
-           Logic handled in src/controls/galleryBaseMaps.js.
-      -->
-      <div id="gallery-container">
-
-        <button id="gallery-toggle-button" title="Galería de Mapas Base">
-          <i class="fa-solid fa-map"></i>
-        </button>
-
-        <div id="gallery-panel" class="hidden-control">
-
-          <button class="basemap-card" data-layer="topo">
-            <img src="https://geoserveis.icgc.cat/servei/catalunya/mapa-base/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=topografic&STYLES=&FORMAT=image/jpeg&CRS=EPSG:25831&BBOX=429000,4580000,433000,4584000&WIDTH=200&HEIGHT=150" alt="Topográfico">
-            <span>Topográfico (ICGC)</span>
-          </button>
-          
-          <button class="basemap-card" data-layer="topo-gris">
-            <img src="https://geoserveis.icgc.cat/servei/catalunya/mapa-base/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=topografic-gris&STYLES=&FORMAT=image/jpeg&CRS=EPSG:25831&BBOX=429000,4580000,433000,4584000&WIDTH=200&HEIGHT=150" alt="Topográfico-Gris">
-            <span>Topográfico Grís (ICGC)</span>
-          </button>
-
-          <button class="basemap-card active" data-layer="orto">
-            <img src="https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=ortofoto_color_vigent&STYLES=&FORMAT=image/jpeg&CRS=EPSG:25831&BBOX=429000,4580000,433000,4584000&WIDTH=200&HEIGHT=150" alt="Ortofoto">
-            <span>Satélite (ICGC)</span>
-          </button>
-          
-        </div>
-      </div>
-
-
-
-    <!-- ============================= 
-              MAP ACTION BUTTONS 
-         ============================= -->
-
-      <div id="map-buttons">
-        <button id="info-topo-button" class="hidden-control">
-          Ver Leyenda
-        </button>
-        <!-- Recenter Button
-             Logic handled in src/controls/recenterButton.js
+        <!-- Timeline Control,
+            logic handled in src/...
+            Shown only when a temporal raster layer is active.
+            The 'hidden-control' class is toggled via JS.
         -->
-        <button id="centrado"></button> 
-      </div>
-    
+        <div id="timeline-control" class="hidden-control">
+          <h3>Línea de Tiempo (Ortofoto 1992)</h3>
+          <p>Aquí iria el texto, boton, o lo que sea</p>
+          <input type="range" style="width: 100%;">
+        </div>
+        
+        <!-- Mouse Position Track
+            Update continuously in src/controls/mousePositionControl.js
+        -->
+        <div id="mouse-position"></div>
+
+        <!-- Popup
+            GetFeatureInfo logic handled in src/interactions/popup.js
+        -->
+        <div id="popup" class="ol-popup">
+          <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+          <div id="popup-content"></div>
+        </div>
+
+        <!-- DrawTools
+            Logic handled in src/controls/drawTools.js.
+            Visibilitbiey controlled by JS via he `hidden-control` class 
+        -->
+        <div id="draw-container">
+          <div id="draw-tools" class="hidden-control">
+            <button id="draw-point" title="Punto"><i class="fa-solid fa-location-dot"></i></button>
+            <button id="draw-line" title="Polilínea"><i class="fa-solid fa-route"></i></button>
+            <button id="draw-polygon" title="Polígono"><i class="fa-solid fa-draw-polygon"></i></button>
+            <button id="draw-clip" title="Recortar Mapa"><i class="fa-solid fa-scissors"></i></button>
+            <button id="draw-clear" title="Borrar Todo" style="background-color: #d90429;"><i class="fa-solid fa-trash"></i></button>
+          </div>
+          <button id="draw-toggle-button" title="Herramientas de Dibujo">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+        </div>
+
+        <!-- Gallery Base Maps
+            Logic handled in src/controls/galleryBaseMaps.js.
+        -->
+        <div id="gallery-container">
+
+          <button id="gallery-toggle-button" title="Galería de Mapas Base">
+            <i class="fa-solid fa-map"></i>
+          </button>
+
+          <div id="gallery-panel" class="hidden-control">
+
+            <button class="basemap-card" data-layer="topo">
+              <img src="https://geoserveis.icgc.cat/servei/catalunya/mapa-base/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=topografic&STYLES=&FORMAT=image/jpeg&CRS=EPSG:25831&BBOX=429000,4580000,433000,4584000&WIDTH=200&HEIGHT=150" alt="Topográfico">
+              <span>Topográfico (ICGC)</span>
+            </button>
+            
+            <button class="basemap-card" data-layer="topo-gris">
+              <img src="https://geoserveis.icgc.cat/servei/catalunya/mapa-base/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=topografic-gris&STYLES=&FORMAT=image/jpeg&CRS=EPSG:25831&BBOX=429000,4580000,433000,4584000&WIDTH=200&HEIGHT=150" alt="Topográfico-Gris">
+              <span>Topográfico Grís (ICGC)</span>
+            </button>
+
+            <button class="basemap-card active" data-layer="orto">
+              <img src="https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=ortofoto_color_vigent&STYLES=&FORMAT=image/jpeg&CRS=EPSG:25831&BBOX=429000,4580000,433000,4584000&WIDTH=200&HEIGHT=150" alt="Ortofoto">
+              <span>Satélite (ICGC)</span>
+            </button>
+            
+          </div>
+        </div>
+      
+
+
+      <!-- ============================= 
+                MAP ACTION BUTTONS 
+          ============================= -->
+
+        <div id="map-buttons">
+          <button id="info-topo-button" class="hidden-control">
+            Ver Leyenda
+          </button>
+          <!-- Recenter Button
+              Logic handled in src/controls/recenterButton.js
+          -->
+          <button id="centrado"></button> 
+        </div>
+    </div>
     <!-- Main application entry point -->
     <script type="module" src="/src/main.js"></script>
   </body>

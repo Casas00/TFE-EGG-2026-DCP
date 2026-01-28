@@ -58,12 +58,29 @@ export let cobertes = new TileLayer({
 });
 
 
+// PRUEBA ACCESO DATOS SERVIDOR
+let source3 = new TileWMS({
+  projection: projection,
+  url: 'http://localhost:8080/geoserver/pruebas_cttc_vector/wms?',
+  params: {'LAYERS':'comarcas'},
+  visible:false
+})
+
+export let comarcas = new TileLayer({
+  source: source3,
+  title: 'Comarcas Catalunya',
+  type:'overlay',
+  visible:false
+})
+
+
+
 // --- Grupo ---
 export let grupo = new LayerGroup({
   title: 'Capas',
   layers:[
     topo,
-    cobertes
-
+    cobertes,
+    comarcas
   ]
 })

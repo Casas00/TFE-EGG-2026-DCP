@@ -5,9 +5,58 @@ html, body {
 }
 
 #map {
+  position: relative;  
   width: 100%;
-  height: 100%;
+  flex: 1;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Application Header --- */
+#app-header {
+  position: relative;
+  height: 60px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  z-index: 2000;
+}
+
+#header-logo {
+  display: flex;
+  align-items: center;
+}
+
+#header-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+#header-title {
+  margin-left: 15px;
+}
+
+#header-title h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1;
+  color: #333;
+}
+
+
 
 /* --- Configuración de los Botones de Zoom---*/
 
@@ -65,7 +114,7 @@ html, body {
   position:absolute;
   bottom: 5px;
   left: 5px;
-  z-index:1 000px;
+  z-index:1000;
 
   background-color: rgb(64, 5, 201);
   border: 1px solid #00000000;
@@ -234,6 +283,8 @@ html, body {
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
   font-size: 24px;
+  z-index: 1000;
+
 }
 
 #centrado::before {
@@ -270,7 +321,7 @@ html, body {
   font-size: 24px;
 
   cursor: pointer;
-  position: relative;
+  position: absolute;
   overflow: hidden;
 
   background-image: none;
