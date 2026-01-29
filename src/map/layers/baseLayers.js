@@ -39,7 +39,7 @@ export let topoGris = new TileLayer({
 let ortoSource = new TileWMS({
   projection: projection,
   url: 'https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms?',
-  params: {'LAYERS':'ortofoto_color_vigent'}
+  params: {'LAYERS':'ortofoto_color_provisional'}
 })
 
 export let ortoLayer = new TileLayer({
