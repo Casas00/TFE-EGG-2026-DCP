@@ -62,8 +62,7 @@ export let cobertes = new TileLayer({
 let source3 = new TileWMS({
   projection: projection,
   url: 'http://localhost:8080/geoserver/pruebas_cttc_vector/wms?',
-  params: {'LAYERS':'comarcas'},
-  visible:false
+  params: {'LAYERS':'comarcas'}
 })
 
 export let comarcas = new TileLayer({
@@ -71,8 +70,22 @@ export let comarcas = new TileLayer({
   title: 'Comarcas Catalunya',
   type:'overlay',
   visible:false
+
 })
 
+// PRUEBA ACCESO SERVIDOR RASTER
+let sourceTIFF = new TileWMS({
+    projection: projection,
+    url: 'http://localhost:8080/geoserver/pruebas_cttc_raster/wms?',
+    params: {'LAYERS':'EGMS_L3_E36N20'},
+})
+
+export let pruebatiff = new TileLayer({
+  source: sourceTIFF,
+  title: 'EGMS',
+  type:'overlay',
+  visible: false
+})
 
 
 // --- Grupo ---
@@ -81,6 +94,7 @@ export let grupo = new LayerGroup({
   layers:[
     topo,
     cobertes,
-    comarcas
+    comarcas,
+    pruebatiff
   ]
 })

@@ -7,7 +7,7 @@ import './style.css'
 import Overlay from 'ol/Overlay.js';
 import { createMap } from './map/createMap';
 import { cobertes, grupo, topo } from './map/layers/vector/dataLayers';
-import { Switcher } from './controls/layerSwitcher';
+import { switcher } from './controls/layerSwitcher';
 import { initHomeButton } from './controls/recenterButton';
 import { actualizarVisibilidadTopo,actualizarVisibilidadPopup } from './controls/hiddenButtons';
 import { mousePositionControl } from './controls/mousePositionControl';
@@ -57,7 +57,7 @@ map.on('singleclick', function (evt) {
   const url = cobertes.getSource().getFeatureInfoUrl(
     evt.coordinate,
     viewResolution,
-    'EPSG:25831',
+    'EPSG:3857',
     {
       'INFO_FORMAT': 'text/html', 
       'QUERY_LAYERS': 'cobertes_2009'
@@ -94,7 +94,7 @@ map.addControl(scaleMetric)
 
 // --- Llamada y confgiuración del LayerSwitcher ---
 
-map.addControl(Switcher);
+map.addControl(switcher);
 
 // -- Eliminación del Bloque de Texto del Layer Switcher (">>") --
 const lsButton = document.querySelector('.layer-switcher > button');
