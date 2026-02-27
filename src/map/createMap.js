@@ -2,6 +2,7 @@ import Map from 'ol/Map.js';
 import { ortoLayer,topoLayer,topoGris } from './layers/baseLayers';
 import { grupo } from './layers/vector/dataLayers';
 import { view } from './view/view';
+import { dynamicGroup } from './layers/data/layerManager';
 
 
 /**
@@ -22,7 +23,8 @@ export function createMap () {
             topoGris,
             topoLayer,
             ortoLayer,
-            grupo
+            grupo,
+            dynamicGroup
         ],
         view: view
     });

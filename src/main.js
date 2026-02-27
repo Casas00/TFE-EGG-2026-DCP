@@ -15,6 +15,7 @@ import { initDrawTool } from './controls/drawTools';
 import { scaleMetric } from './utils/scaleLine';
 import { misMapasBase } from './map/layers/baseLayers';
 import { initBaseGallery } from './controls/galleryBaseMaps';
+import { initCatalogPanel } from './controls/catalogPanel';
 
 
 
@@ -114,6 +115,9 @@ observer.observe(lsContainer, { attributes: true, attributeFilter: ['class'] });
 
 // --- Llamada Galeria de Mapas Base ---
 initBaseGallery(misMapasBase);
+
+// --- Llamada Galeria de Datos ---
+initCatalogPanel();
 
 
 

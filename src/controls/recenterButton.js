@@ -6,7 +6,7 @@ export function initHomeButton(map) {
   
   const botonCentrado = document.getElementById('centrado');
 
-  const homeCoords = [416763.267, 4584242.093];
+  const homeCoords = [241015, 5074000];
   const homeZoom = 11.5;
 
   

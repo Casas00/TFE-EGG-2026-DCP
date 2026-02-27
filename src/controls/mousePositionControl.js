@@ -20,10 +20,10 @@ import { projection } from '../map/projection/projectionEPSG';
 
 export const mousePositionControl = new  MousePosition({
     coordinateFormat: function(coordinate) {
-        return `X: ${coordinate[0].toFixed(3)} <br> Y: ${coordinate[1].toFixed(3)}`
+        return `Long: ${coordinate[0].toFixed(5)}º <br> Lat: ${coordinate[1].toFixed(5)}º`
 
     },
-    projection: projection,
+    projection: 'EPSG:4326',
     className: 'custom-mouse-position',
     target: document.getElementById('mouse-position')
 

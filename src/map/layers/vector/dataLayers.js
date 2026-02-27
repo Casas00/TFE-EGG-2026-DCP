@@ -87,14 +87,89 @@ export let pruebatiff = new TileLayer({
   visible: false
 })
 
+let sourceCosta = new TileWMS({
+  projection: projection,
+  url: 'http://coastal-monitoring:8080/geoserver/pruebas_cttc/wms?',
+  params:{'LAYERS':'linea_costa'}
+})
+
+export let linea_costa = new TileLayer({
+  source: sourceCosta,
+  title:'Linea Costa',
+  type:'overlay',
+  visible:true
+})
+
+
+let calculadesSource = new TileWMS({
+  projection: projection,
+  url: 'http://coastal-monitoring:8080/geoserver/pruebas_cttc/wms?',
+  params: {'LAYERS':'	dadescalculades'}
+})
+
+export let dadesCalculades = new TileLayer({
+  source: calculadesSource,
+  title: 'DadesCalculades',
+  type:'overlay',
+  visible:true
+})
+
+let calibradesSource = new TileWMS({
+  projection: projection,
+  url: 'http://coastal-monitoring:8080/geoserver/pruebas_cttc/wms?',
+  params: {'LAYERS':'	dadescalibrades'}
+})
+
+export let dadesCalibrades = new TileLayer({
+  source: calibradesSource,
+  title: 'DadesCalibrades',
+  type:'overlay',
+  visible:true
+})
+
+let carregadesSource = new TileWMS({
+  projection: projection,
+  url: 'http://coastal-monitoring:8080/geoserver/pruebas_cttc/wms?',
+  params: {'LAYERS':'	dadesdescarregades'}
+})
+
+export let dadesDescarregades = new TileLayer({
+  source: carregadesSource,
+  title: 'DadesDescarregades',
+  type:'overlay',
+  visible:true
+})
+
+let estaconSource = new TileWMS({
+  projection: projection,
+  url: 'http://coastal-monitoring:8080/geoserver/pruebas_cttc/wms?',
+  params: {'LAYERS':'	dadesestacio'}
+})
+
+export let dadesEstacio = new TileLayer({
+  source: estaconSource,
+  title: 'Dades Estacio',
+  type:'overlay',
+  visible:true
+})
+
+let interpoladasSource = new TileWMS({
+  projection: projection,
+  url: 'http://coastal-monitoring:8080/geoserver/pruebas_cttc/wms?',
+  params: {'LAYERS':'	dadesInterpolades'}
+})
+
+export let dadesInterpolades = new TileLayer({
+  source: interpoladasSource,
+  title: 'Dades Interpolades',
+  type:'overlay',
+  visible:false
+})
+
 
 // --- Grupo ---
 export let grupo = new LayerGroup({
   title: 'Capas',
   layers:[
-    topo,
-    cobertes,
-    comarcas,
-    pruebatiff
-  ]
+    comarcas]
 })
