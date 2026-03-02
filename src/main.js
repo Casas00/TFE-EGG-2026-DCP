@@ -50,34 +50,6 @@ closer.onclick = function() {
 
 };
 
-// 4. Evento Pop-up
-map.on('singleclick', function (evt) {
-  const viewResolution = map.getView().getResolution();
-  
-
-  const url = cobertes.getSource().getFeatureInfoUrl(
-    evt.coordinate,
-    viewResolution,
-    'EPSG:3857',
-    {
-      'INFO_FORMAT': 'text/html', 
-      'QUERY_LAYERS': 'cobertes_2009'
-    }
-  );
-
-  if (url) {
-    fetch(url)
-      .then((response) => response.text()) 
-      .then((html) => {
-        content.innerHTML = html;
-        overlay.setPosition(evt.coordinate);
-      })
-      .catch((err) => {
-        console.error("Error cargando info:", err);
-      });
-  }
-});
-
 
 // --- Llamada las funciones de visibilidad de elementos en función de la capa ---
 
@@ -118,6 +90,4 @@ initBaseGallery(misMapasBase);
 
 // --- Llamada Galeria de Datos ---
 initCatalogPanel();
-
-
 

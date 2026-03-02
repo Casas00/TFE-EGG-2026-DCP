@@ -87,7 +87,7 @@ function generateCatalog(panel) {
         })
 
         removeBtn.addEventListener('click', (e) => {
-          e.stopPrograpation();
+          e.stopPropagation();
           removeLayer(layer.id)
         })
 

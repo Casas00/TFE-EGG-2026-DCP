@@ -23,7 +23,6 @@ export function createMap () {
             topoGris,
             topoLayer,
             ortoLayer,
-            grupo,
             dynamicGroup
         ],
         view: view

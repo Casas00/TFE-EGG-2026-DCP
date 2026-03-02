@@ -18,7 +18,7 @@ export function addLayer(layerConfig) {
     }
     
     const source = new TileWMS({
-        url: `http://coastal-monitoring:8080/geoserver/${workspace}/wms`,
+        url: `/geoserver/${workspace}/wms`,
         params: {
             LAYERS: `${layerName}`,
             TILED: true
@@ -35,7 +35,7 @@ export function addLayer(layerConfig) {
 
     dynamicGroup.getLayers().push(layer);
 
-    activeLayers[id] == layer;
+    activeLayers[id] = layer;
 
     console.log(`Layer ${id} added`)
 
@@ -53,7 +53,7 @@ export function removeLayer(id) {
 
     delete activeLayers[id];
 
-    console.log('Layer ${id} removed');
+    console.log(`Layer ${id} removed`);
 }
 
 export function isLayerActive(id) {
