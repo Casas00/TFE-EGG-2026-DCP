@@ -9,13 +9,14 @@ import { createMap } from './map/createMap';
 import { cobertes, grupo, topo } from './map/layers/vector/dataLayers';
 import { switcher } from './controls/layerSwitcher';
 import { initHomeButton } from './controls/recenterButton';
-import { actualizarVisibilidadTopo,actualizarVisibilidadPopup } from './controls/hiddenButtons';
 import { mousePositionControl } from './controls/mousePositionControl';
 import { initDrawTool } from './controls/drawTools';
 import { scaleMetric } from './utils/scaleLine';
 import { misMapasBase } from './map/layers/baseLayers';
 import { initBaseGallery } from './controls/galleryBaseMaps';
 import { initCatalogPanel } from './controls/catalogPanel';
+import { initGetFeatureInfo } from './ui/getFeatureInfo';
+
 
 
 
@@ -24,37 +25,6 @@ const map = createMap()
 
 // -- Coordenadas --
 map.addControl(mousePositionControl)
-
-// --- Pop-up (tabla) ---
-const container = document.getElementById("popup")
-const content = document.getElementById("popup-content")
-const closer = document.getElementById("popup-closer")
-
-const overlay = new Overlay({
-  element: container,
-  autoPan: {
-    animation: {
-      duration: 250,
-    },
-  },
-}) 
-
-map.addOverlay(overlay)
-
-// -- Configuración del pop-up
-
-closer.onclick = function() {
-  overlay.setPosition(undefined);
-  closer.blur();
-  return false;
-
-};
-
-
-// --- Llamada las funciones de visibilidad de elementos en función de la capa ---
-
-actualizarVisibilidadTopo()
-actualizarVisibilidadPopup()
 
 // --- Llamada a la función de botón de centrado --- 
 initHomeButton(map)
@@ -91,3 +61,5 @@ initBaseGallery(misMapasBase);
 // --- Llamada Galeria de Datos ---
 initCatalogPanel();
 
+// --- GetFeatureInfo --- 
+initGetFeatureInfo(map)

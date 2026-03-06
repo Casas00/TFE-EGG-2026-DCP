@@ -10,7 +10,8 @@ export const catalogData = [
                         name: 'Shoreline 2023',
                         workspace: 'pruebas_cttc',
                         layerName: 'linea_costa',
-                        type:'wms'
+                        type:'wms',
+                        datatype: 'vector'
 
                     }
                 ]
@@ -28,7 +29,8 @@ export const catalogData = [
                         name: 'NO2 Surface',
                         workspace: 'pruebas_cttc',
                         layerName:'no2_surface',
-                        type:'wms'
+                        type:'wms',
+                        datatype: 'raster'
 
                     },
                     {
@@ -36,7 +38,8 @@ export const catalogData = [
                         name: 'NO2 Mean',
                         workspace: 'pruebas_cttc',
                         layerName:'no2_mean',
-                        type:'wms'
+                        type:'wms',
+                        datatype:'raster'
 
                     }
                 ]
@@ -49,7 +52,8 @@ export const catalogData = [
                         name: 'Dades Calculades',
                         workspace:'pruebas_cttc' ,
                         layerName: 'dadescalculades',
-                        type: 'wms'
+                        type: 'wms',
+                        datatype: 'vector'
 
                     },
                     {
@@ -57,7 +61,8 @@ export const catalogData = [
                         name: 'Dades Calibrades',
                         workspace:'pruebas_cttc' ,
                         layerName: 'dadescalibrades',
-                        type: 'wms'
+                        type: 'wms',
+                        datatype:'vector'
 
                     },
                     {
@@ -65,7 +70,8 @@ export const catalogData = [
                         name: 'Dades Descarregades',
                         workspace:'pruebas_cttc' ,
                         layerName: 'dadesdescarregades',
-                        type: 'wms'
+                        type: 'wms',
+                        datatype:'vector'
 
                     },
                     {
@@ -73,7 +79,8 @@ export const catalogData = [
                         name:'Dades Interpolades',
                         workspace: 'pruebas_cttc',
                         layerName:'dadesInterpolades',
-                        type:'wms'
+                        type:'wms',
+                        datatype:'raster'
 
                     }
                 ]
