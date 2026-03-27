@@ -119,13 +119,9 @@ export function initDrawTool(map, layerToClip = null) {
         drawInteraction.on('drawend', (e) => {
             
             if (isClippingMode && layerToClip) {
-                // Guardamos geometría
+      
                 clipGeometry = e.feature.getGeometry();
                 
-                // Opcional: Borrar línea amarilla
-                // source.clear(); 
-
-                // Forzamos repintado de TODO el grupo
                 refrescarRecursivo(layerToClip);
             } 
         });

@@ -166,10 +166,23 @@ export let dadesInterpolades = new TileLayer({
   visible:false
 })
 
+let cult_tech_source = new TileWMS({
+  projection: projection,
+  url: 'http://coastal-monitoring:8080/geoserver/Sen2Rice/wms?',
+  params: {'LAYERS':'cultivation_technique'}
+})
+
+let cult_tech = new TileLayer({
+  source: cult_tech_source,
+  title:'Cultiation Technique',
+  type:'overlay',
+  visible: true
+})
+
 
 // --- Grupo ---
 export let grupo = new LayerGroup({
   title: 'Capas',
   layers:[
-    comarcas]
+  cult_tech]
 })

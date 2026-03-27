@@ -16,6 +16,7 @@ import { misMapasBase } from './map/layers/baseLayers';
 import { initBaseGallery } from './controls/galleryBaseMaps';
 import { initCatalogPanel } from './controls/catalogPanel';
 import { initGetFeatureInfo } from './ui/getFeatureInfo';
+import { updateLayerVaribale } from './map/layers/data/layerManager';
 
 
 
@@ -63,3 +64,11 @@ initCatalogPanel();
 
 // --- GetFeatureInfo --- 
 initGetFeatureInfo(map)
+
+// --- NDVI Dropdown ---
+const dropdown = document.getElementById('ndvi-dropdown')
+
+dropdown.addEventListener('change', e => {
+    const value = e.target.value;
+    updateLayerVaribale('max_ndvi',value)
+})

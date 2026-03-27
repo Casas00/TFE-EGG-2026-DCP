@@ -24,8 +24,6 @@ export function initGetFeatureInfo(map) {
 
     map.on("singleclick", function(evt) {
 
-        console.log("CLICK DETECTED!")
-
         const viewResolution = map.getView().getResolution();
         const layers = dynamicGroup.getLayers().getArray().filter(Boolean);
 
@@ -61,9 +59,7 @@ export function initGetFeatureInfo(map) {
             }
         );
 
-        console.log('Layers: ',layers)
-        console.log('Target:', targetLayer)
-        console.log('URL: ',url)
+        console.log(url)
 
         if (url) {  
         

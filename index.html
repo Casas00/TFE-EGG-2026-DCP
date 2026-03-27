@@ -58,17 +58,26 @@
       -->
       <div id="map">
 
-        <!-- Timeline Control,
-            logic handled in src/...
+        <!-- Slider Control,
+            logic handled in src/ui/timeSlider.js
             Shown only when a temporal raster layer is active.
             The 'hidden-control' class is toggled via JS.
         -->
-        <div id="timeline-control" class="hidden-control">
-          <h3>Línea de Tiempo (Ortofoto 1992)</h3>
-          <p>Aquí iria el texto, boton, o lo que sea</p>
-          <input type="range" style="width: 100%;">
+        <div id="time-slider-container" class="hidden-control">
+          <input type="range" id="time-slider">
+          <div id="time-label">Fecha: ----</div>
         </div>
-        
+
+        <div id="ndvi-selector" class="hidden-control">
+          <label>Variable:</label>
+          <select id="ndvi-dropdown">
+              <option value="max_ndvi">Max NDVI</option>
+              <option value="min_ndwi">Min NDWI</option>
+              <option value="ti_ndvi">TI NDVI</option>
+          </select>
+        </div>
+
+
         <!-- Mouse Position Track
             Update continuously in src/controls/mousePositionControl.js
         -->

@@ -78,3 +78,19 @@ export function reorderLegends(layersArray) {
     });
 
 }
+
+export function updateLegend(layerConfig,params) {
+    const {workspace, layerName, id} = layerConfig
+
+    let legendUrl = `/geoserver/${workspace}/wms?` +
+        `REQUEST=GetLegendGraphic&FORMAT=image/png&LAYER=${layerName}`;
+
+    if (params.STYLES) {
+        legendUrl += `&STYLE=${params.STYLES}`
+    }
+    const img = document.querySelector(`#legend-${id} img`)
+
+    if (img) {
+        img.src = legendUrl
+    }
+}
