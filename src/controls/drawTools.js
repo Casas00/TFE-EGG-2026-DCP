@@ -1,12 +1,13 @@
-
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
 import Draw from 'ol/interaction/Draw.js';
 import { Circle as CircleStyle, Fill, Stroke, Style } from 'ol/style.js';
-import { getVectorContext } from "ol/render";
-import LayerGroup from 'ol/layer/Group.js'; // Importante para detectar grupos
+
+let clipGeometry = null;
+let mapRef = null; // <-- Añadimos una referencia global para el mapa en este módulo
 
 export function initDrawTool(map, layerToClip = null) {
+    mapRef = map; // <-- Guardamos la referencia del mapa al inicializar
 
     // 1. Capa visual para los dibujos (Líneas amarillas)
     const source = new VectorSource();
@@ -22,7 +23,6 @@ export function initDrawTool(map, layerToClip = null) {
     map.addLayer(vectorLayer);
 
     // --- VARIABLES DE ESTADO ---
-    let clipGeometry = null;
     let drawInteraction;
     let isClippingMode = false;
 
@@ -36,70 +36,6 @@ export function initDrawTool(map, layerToClip = null) {
     const btnClear = document.getElementById('draw-clear');
     
     const botonesHerramientas = [btnPoint, btnLine, btnPolygon, btnClip];
-
-
-    // --- 2. LÓGICA DE RECORTE (RECURSIVA) ---
-
-    // A. Aplica el evento a una capa individual (hoja del árbol)
-    const attachClipToLayer = (layer) => {
-        
-        layer.on('prerender', (evt) => {
-            if (!clipGeometry) return;
-
-            try {
-                const ctx = evt.context;
-                const vectorContext = getVectorContext(evt);
-                
-                ctx.save(); // Guardado del estado del canvas
-                ctx.beginPath(); // Comienzo de la máscara
-                
-                // Dibujo del polígono
-                vectorContext.setStyle(new Style({ fill: new Fill({ color: 'black' }) }));
-                vectorContext.drawGeometry(clipGeometry);
-                
-                ctx.clip(); // Recorte efectivo
-            } catch (error) {
-                // Si salta esto, es que alguna capa del grupo no tiene crossOrigin: 'anonymous'
-                console.warn("Error recortando capa (revisa CORS):", layer.get('title'));
-            }
-        });
-
-        layer.on('postrender', (evt) => {
-            if (!clipGeometry) return;
-            const ctx = evt.context;
-            ctx.restore();
-        });
-    };
-
-    // B. Función Recursiva: Navega por grupos y subgrupos
-    const aplicarRecorteRecursivo = (elemento) => {
-        if (!elemento) return;
-
-        if (elemento instanceof LayerGroup) {
-            // Si es grupo, bajamos un nivel
-            elemento.getLayers().forEach(child => aplicarRecorteRecursivo(child));
-        } else {
-            // Si es capa, aplicamos lógica
-            attachClipToLayer(elemento);
-        }
-    };
-
-    // C. Función Recursiva de Refresco: Fuerza el repintado
-    const refrescarRecursivo = (elemento) => {
-        if (!elemento) return;
-
-        if (elemento instanceof LayerGroup) {
-            elemento.getLayers().forEach(child => refrescarRecursivo(child));
-        } else {
-            elemento.changed();
-        }
-    }
-
-    // --- INICIALIZACIÓN ---
-    // Aplicamos los listeners a todo el árbol del grupo nada más empezar
-    if (layerToClip) {
-        aplicarRecorteRecursivo(layerToClip);
-    }
 
 
     // --- 3. INTERACCIÓN ---
@@ -117,12 +53,8 @@ export function initDrawTool(map, layerToClip = null) {
         drawInteraction = new Draw({ source: source, type: tipo });
 
         drawInteraction.on('drawend', (e) => {
-            
             if (isClippingMode && layerToClip) {
-      
-                clipGeometry = e.feature.getGeometry();
-                
-                refrescarRecursivo(layerToClip);
+                setClipGeometry(e.feature.getGeometry(), layerToClip);
             } 
         });
 
@@ -130,9 +62,8 @@ export function initDrawTool(map, layerToClip = null) {
     }
 
     // --- 4. LISTENERS DE BOTONES ---
-
     toggleBtn.addEventListener('click', () => {
-        toolsPanel.classList.toggle('hidden-control'); // Asegúrate que coincide con tu CSS (.control-oculto o .hidden-control)
+        toolsPanel.classList.toggle('hidden-control'); 
         if (toolsPanel.classList.contains('hidden-control')) {
             activarInteraccion(null);
         }
@@ -145,16 +76,72 @@ export function initDrawTool(map, layerToClip = null) {
 
     // Herramienta RECORTE
     btnClip.addEventListener('click', () => {
-        clipGeometry = null;
-        if(layerToClip) refrescarRecursivo(layerToClip);
+        setClipGeometry(null, layerToClip);
         source.clear();
-        activarInteraccion('Polygon', btnClip, true); // Modo Clip = true
+        activarInteraccion('Polygon', btnClip, true);
     });
 
     // Borrar Todo
     btnClear.addEventListener('click', () => {
         source.clear();
-        clipGeometry = null;
-        if(layerToClip) refrescarRecursivo(layerToClip);
+        setClipGeometry(null, layerToClip);
     });
+}
+
+export function applyClipToLayer(layer) {
+
+    layer.on('prerender', (evt) => {
+        if (!clipGeometry) return;
+        if (!evt.frameState) return;
+
+        const ctx = evt.context;
+        // Obtenemos el pixelRatio para evitar desfases en monitores modernos
+        const pixelRatio = evt.frameState.pixelRatio; 
+
+        // Verificamos que tengamos la referencia del mapa
+        if (!mapRef) return;
+
+        const rings = clipGeometry.getCoordinates();
+        if (!rings || !rings.length) return;
+
+        const exteriorRing = rings[0];
+        if (!exteriorRing || exteriorRing.length < 3) return;
+
+        ctx.save();
+        ctx.beginPath();
+
+        try {
+            exteriorRing.forEach((coord, i) => {
+                if (!Array.isArray(coord) || coord.length < 2) return;
+
+                // Utilizamos el método del mapa que es el más robusto para esto
+                const pixel = mapRef.getPixelFromCoordinate(coord);
+                if (!pixel) return;
+
+                // Multiplicamos por el ratio de pixeles del dispositivo
+                const x = pixel[0] * pixelRatio;
+                const y = pixel[1] * pixelRatio;
+
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+
+            ctx.closePath();
+            ctx.clip();
+
+        } catch (e) {
+            console.warn("Clip error:", e);
+        }
+    });
+
+    layer.on('postrender', (evt) => {
+        if (!clipGeometry) return;
+        evt.context.restore();
+    });
+}
+
+export function setClipGeometry(geometry, layerGroup) {
+    clipGeometry = geometry;
+    // Forzamos el redibujado de las capas del grupo para que se aplique/quite el recorte
+    layerGroup.getLayers().forEach(layer => layer.changed());
 }

@@ -1,5 +1,6 @@
 import { catalogData } from "../map/layers/data/catalogConfig";
 import { addLayer, removeLayer } from "../map/layers/data/layerManager";
+import { showMetaadata } from "../ui/metadataPanel";
 
 export function initCatalogPanel() {
 
@@ -84,6 +85,10 @@ function generateCatalog(panel) {
         addBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           addLayer(layer)
+        })
+
+        infoBtn.addEventListener('click', (e) => {
+          showMetaadata(layer)
         })
 
         removeBtn.addEventListener('click', (e) => {

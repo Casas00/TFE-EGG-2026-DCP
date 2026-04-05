@@ -4,6 +4,9 @@ import { TileWMS } from "ol/source";
 import { addLegend,removeLegend, reorderLegends} from "../../../ui/legendManager";
 import { initTimeSlider,showTimeSlider,hideTimeSlider, updateSliderDates } from "../../../ui/timeSlider.js";
 import { updateLegend } from "../../../ui/legendManager";
+import { apply } from "ol/transform.js";
+import { applyClipToLayer } from "../../../controls/drawTools.js";
+
 
 const activeLayers = {}
 
@@ -75,12 +78,15 @@ export function addLayer(layerConfig) {
 
 
     dynamicGroup.getLayers().push(layer);
-
+   
     activeLayers[id] = layer;
 
     console.log(`Layer ${id} added`)
 
     addLegend(layerConfig)
+
+    applyClipToLayer(layer)
+
 
     layer.on("change:visible", () => {
 
@@ -89,6 +95,8 @@ export function addLayer(layerConfig) {
         } else {
             removeLegend(id);
         }
+
+        updateSliderState()
 
     });
 
@@ -194,14 +202,18 @@ function getClosestTime(targetDate,availableDates) {
 
 function hasTemporalLayers() {
     return Object.values(activeLayers).some(layer => {
-        return layer.get('config')?.temporal;
-    })
+        const config = layer.get('config');
+        return config?.temporal && layer.getVisible();
+    });
 }
 
 function getAllAvailableDates() {
     const allDates = new Set()
 
     Object.values(activeLayers).forEach(layer => {
+
+        if (!layer.getVisible()) return; 
+
         const config = layer.get('config')
 
         if (config?.temporal) {
@@ -237,6 +249,7 @@ function updateSliderState() {
         globalTime = null;
         sliderInitilized = false;
         currentDates = []
+        hideTimeSlider()
     }
 }
 

@@ -16,7 +16,7 @@ import { misMapasBase } from './map/layers/baseLayers';
 import { initBaseGallery } from './controls/galleryBaseMaps';
 import { initCatalogPanel } from './controls/catalogPanel';
 import { initGetFeatureInfo } from './ui/getFeatureInfo';
-import { updateLayerVaribale } from './map/layers/data/layerManager';
+import { updateLayerVaribale,dynamicGroup } from './map/layers/data/layerManager';
 
 
 
@@ -31,7 +31,7 @@ map.addControl(mousePositionControl)
 initHomeButton(map)
 
 // --- Llamada a la función de dibujo ---
-initDrawTool(map,grupo)
+initDrawTool(map,dynamicGroup)
 
 // --- Incorporación del ScaleLine al mapa ---
 map.addControl(scaleMetric)
@@ -72,3 +72,7 @@ dropdown.addEventListener('change', e => {
     const value = e.target.value;
     updateLayerVaribale('max_ndvi',value)
 })
+
+document.getElementById('metadata-close').onclick = () => {
+    document.getElementById('metadata-popup').classList.add('hidden-control')
+}

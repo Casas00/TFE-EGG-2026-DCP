@@ -222,6 +222,31 @@ html, body, #app {
     z-index:1000;
 }
 
+#metadata-popup {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 2000;
+}
+
+#metadata-popup h3 {
+    margin-top: 0;
+}
+
+#metadata-popup table {
+    width: 100%;
+    font-size: 12px;
+}
+
+#metadata-popup td {
+    padding: 4px;
+}
+
 /* --- Pop-Up (Tabla) ---*/
 /* Estilos del Popup */
 .ol-popup {
@@ -629,7 +654,7 @@ html, body, #app {
   position: absolute;
   bottom: 20px;
   right: 10px;
-  z-index: 2000;
+  z-index: 1000;
   width: 220px;
   background: rgba(255,255,255,0.95);
   border: 1px solid #ccc;
