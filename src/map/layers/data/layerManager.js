@@ -4,7 +4,6 @@ import { TileWMS } from "ol/source";
 import { addLegend,removeLegend, reorderLegends} from "../../../ui/legendManager";
 import { initTimeSlider,showTimeSlider,hideTimeSlider, updateSliderDates } from "../../../ui/timeSlider.js";
 import { updateLegend } from "../../../ui/legendManager";
-import { apply } from "ol/transform.js";
 import { applyClipToLayer } from "../../../controls/drawTools.js";
 
 
@@ -39,11 +38,6 @@ export function addLayer(layerConfig) {
 
     const style = layerConfig.style || null;
 
-    /*if (layerConfig.temporal && layerConfig.styleConfig?.type === 'byYear') {
-        const year = new Date(time).getFullYear().toString()
-        params.STYLES = layerConfig.styleConfig.pattern.replace('{year}',year)
-    } */
-
     const params = {
             LAYERS: `${layerName}`,
             TILED: true,
@@ -52,11 +46,13 @@ export function addLayer(layerConfig) {
     if (time) {
         params.TIME = time;
     }
-/*
-    if (style) {
-        params.STYLE = style
-    }
-*/
+
+    const Z_INDEX = {
+        RASTER: 0,
+        VECTOR: 10,
+        DRAW: 20
+    };
+
     const source = new TileWMS({
         url: `/geoserver/${workspace}/wms`,
         params: params,
@@ -75,6 +71,7 @@ export function addLayer(layerConfig) {
 
     layer.set('config', layerConfig)
     layer.set('initialTime',time)
+    layer.setZIndex(Z_INDEX[layerConfig.datatype.toUpperCase()]);
 
 
     dynamicGroup.getLayers().push(layer);
@@ -105,7 +102,9 @@ export function addLayer(layerConfig) {
 
     if (layerConfig.id === 'max_ndvi') {
         document.getElementById('ndvi-selector').classList.remove('hidden-control')
-    }
+    } if (layerConfig.id  === 'ndvi') {
+        document.getElementById('ndvi-selector').classList.remove('hidden-control')
+    };
 
 }
 
@@ -128,9 +127,11 @@ export function removeLayer(id) {
     reorderLegends(dynamicGroup.getLayers().getArray())
     updateSliderState();
 
-    if (id === 'max_ndvi') {
+    if (id === 'max_ndvi' ) {
         document.getElementById('ndvi-selector').classList.add('hidden-control')
-    }
+    } if (id === 'ndvi') {
+        document.getElementById('ndvi-selector').classList.add('hidden-control')
+    };
 }
 
 export function isLayerActive(id) {
@@ -235,11 +236,11 @@ function updateSliderState() {
         const datesChanged = !datesComaprative(newDates,currentDates)
 
         if (!sliderInitilized) {
-            initTimeSlider(newDates, updateAllLayersTime)
+            initTimeSlider(newDates, updateAllLayersTime,getTimeFormat())
             sliderInitilized = true
             currentDates = newDates
         } else if (datesChanged) {
-            updateSliderDates(newDates)
+            updateSliderDates(newDates, getTimeFormat())
             currentDates = newDates
         }
 
@@ -251,6 +252,26 @@ function updateSliderState() {
         currentDates = []
         hideTimeSlider()
     }
+}
+
+function getTimeFormat() {
+    const formats = new Set();
+
+    Object.values(activeLayers).forEach(layer => {
+        if (!layer.getVisible()) return;
+
+        const config = layer.get('config');
+        if (config?.temporal) {
+            formats.add(config.time.format || 'date')
+        }
+    })
+
+    if (formats.size === 1) {
+        return[...formats][0]
+    }
+
+    return 'date'
+
 }
 
 export const dynamicGroup = new LayerGroup({

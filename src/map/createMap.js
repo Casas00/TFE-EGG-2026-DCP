@@ -1,6 +1,5 @@
 import Map from 'ol/Map.js';
-import { ortoLayer,topoLayer,topoGris } from './layers/baseLayers';
-import { grupo } from './layers/vector/dataLayers';
+import { worldLayer,OpenStreetMaps,topoGris } from './layers/baseLayers';
 import { view } from './view/view';
 import { dynamicGroup } from './layers/data/layerManager';
 
@@ -21,8 +20,8 @@ export function createMap () {
         overlays: [],
         layers: [
             topoGris,
-            topoLayer,
-            ortoLayer,
+            worldLayer,
+            OpenStreetMaps,
             dynamicGroup
         ],
         view: view

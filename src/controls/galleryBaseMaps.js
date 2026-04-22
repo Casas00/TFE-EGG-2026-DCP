@@ -4,6 +4,7 @@
  * Ej: {'osm': capaOsm, 'pnoa':capaPnoa}
  */
 
+import { closeMainPanels } from "../main";
 
 export function initBaseGallery(layersDict) {
     
@@ -14,8 +15,15 @@ export function initBaseGallery(layersDict) {
 
     // Toggle del Panle (Abrir/Cerrar)
     toggleBtn.addEventListener('click', () => {
-        panel.classList.toggle('hidden-control');
-    });
+
+        const isOpen = !panel.classList.contains('hidden-control');
+
+        closeMainPanels();
+
+        if (!isOpen) {
+            panel.classList.remove('hidden-control');
+        }
+    })
 
     // Lógica Selección de capas
     cards.forEach(card => {

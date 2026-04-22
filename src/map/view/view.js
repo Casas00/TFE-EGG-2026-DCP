@@ -13,6 +13,6 @@ import { projection } from '../projection/projectionEPSG';
 
 export const view = new View({
             projection: projection,
-            center: [500000,6000000],
+            center: [1500000,6300000],
             zoom:5
 })

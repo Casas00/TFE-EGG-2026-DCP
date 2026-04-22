@@ -1,6 +1,7 @@
 import { catalogData } from "../map/layers/data/catalogConfig";
 import { addLayer, removeLayer } from "../map/layers/data/layerManager";
 import { showMetaadata } from "../ui/metadataPanel";
+import { closeMainPanels } from "../main";
 
 export function initCatalogPanel() {
 
@@ -8,8 +9,16 @@ export function initCatalogPanel() {
     const panel = document.getElementById('data-gallery-panel')
 
     toggleBtn.addEventListener('click', () => {
-        panel.classList.toggle('hidden-control')
-    });
+
+      const isOpen = !panel.classList.contains('hidden-control');
+
+      closeMainPanels();
+
+      if (!isOpen) {
+        panel.classList.remove('hidden-control');
+      }
+
+    })
 
     generateCatalog(panel);
 

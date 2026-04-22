@@ -47,6 +47,7 @@ function updateLegendPanelVisibility() {
 
     if (legendContainer.children.length === 0) {
         legendPanel.style.display = "none";
+        //updatePanelLayout()
     } else {
         legendPanel.style.display = "block";
     }

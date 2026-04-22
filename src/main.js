@@ -6,7 +6,6 @@ import './style.css'
 
 import Overlay from 'ol/Overlay.js';
 import { createMap } from './map/createMap';
-import { cobertes, grupo, topo } from './map/layers/vector/dataLayers';
 import { switcher } from './controls/layerSwitcher';
 import { initHomeButton } from './controls/recenterButton';
 import { mousePositionControl } from './controls/mousePositionControl';
@@ -17,9 +16,6 @@ import { initBaseGallery } from './controls/galleryBaseMaps';
 import { initCatalogPanel } from './controls/catalogPanel';
 import { initGetFeatureInfo } from './ui/getFeatureInfo';
 import { updateLayerVaribale,dynamicGroup } from './map/layers/data/layerManager';
-
-
-
 
 // -- Creación del Mapa
 const map = createMap()
@@ -47,12 +43,17 @@ const lsButton = document.querySelector('.layer-switcher > button');
 const lsContainer = document.querySelector('.layer-switcher');
 
 const observer = new MutationObserver(() => {
+
     if (lsContainer.classList.contains('shown')) {
-        lsButton.textContent = ''; // elimina el texto "»"
-    } else {
-        lsButton.textContent = ''; // opcional: mantiene vacío
+
+        document.getElementById('gallery-panel')?.classList.add('hidden-control');
+        document.getElementById('data-gallery-panel')?.classList.add('hidden-control')
+
     }
-});
+
+    lsButton.textContent = '';
+
+})
 
 observer.observe(lsContainer, { attributes: true, attributeFilter: ['class'] });
 
@@ -71,8 +72,21 @@ const dropdown = document.getElementById('ndvi-dropdown')
 dropdown.addEventListener('change', e => {
     const value = e.target.value;
     updateLayerVaribale('max_ndvi',value)
+    updateLayerVaribale('ndvi',value)
 })
 
 document.getElementById('metadata-close').onclick = () => {
     document.getElementById('metadata-popup').classList.add('hidden-control')
+}
+
+export function closeMainPanels() {
+
+    document.getElementById('gallery-panel')?.classList.add('hidden-control');
+
+    document.getElementById('data-gallery-panel')?.classList.add('hidden-control');
+
+    const layerSwitcher = document.querySelector('.layer-switcher');
+    if (layerSwitcher) {
+        layerSwitcher.classList.remove('shown')
+    }
 }

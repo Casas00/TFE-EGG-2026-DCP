@@ -16,6 +16,7 @@ export const catalogData = [
             temporal: true,
             time: {
               default: "latest",
+              format: "date",
               available: [
                 "2023-12-21","2023-12-22","2023-12-23","2023-12-24","2023-12-25",
                 "2023-12-26","2023-12-27","2023-12-28","2023-12-29","2023-12-30",
@@ -26,7 +27,7 @@ export const catalogData = [
             metadata: {
               base: {
                 title: 'NO2 Surface',
-                description: 'Concentración de NO2 en la superficie terrestre en Cataluña',
+                description: ' NO2 concentration in the land surface in Catalonia ',
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2023 - 2024',
@@ -48,6 +49,7 @@ export const catalogData = [
             temporal: true,
             time: {
               default: "latest",
+              format: "date",
               available: [
                 "2023-12-21","2023-12-22","2023-12-23","2023-12-24","2023-12-25",
                 "2023-12-26","2023-12-27","2023-12-28","2023-12-29","2023-12-30",
@@ -58,7 +60,7 @@ export const catalogData = [
             metadata: {
               base: {
                 title: 'NO2 Mean',
-                description: 'Concentración media NO2 en la superficie terrestre en Cataluña',
+                description: 'Mean NO2 concentration in the land surface in Catalonia',
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2023 - 2024',
@@ -76,7 +78,7 @@ export const catalogData = [
         layers: [
           {
             id: "dadesCalculades",
-            name: "Dades Calculades",
+            name: "Calculated Data",
             workspace: "AirCrowd",
             layerName: "dadesCalculades",
             type: "wms",
@@ -85,6 +87,7 @@ export const catalogData = [
             temporal: true,
             time: {
               default: "latest",
+              format: "date",
               available: [
                 "2019-07-10","2019-07-11","2019-07-15","2019-07-23","2019-07-26",
                 "2019-08-26","2019-08-28","2019-08-29","2019-08-30","2019-09-02",
@@ -96,8 +99,8 @@ export const catalogData = [
             },
             metadata: {
               base: {
-                title: 'Dades Calculades',
-                description: 'Datos Calculados',
+                title: 'Calculated Data',
+                description: 'Calculated Data',
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2019 - 2020',
@@ -110,7 +113,7 @@ export const catalogData = [
           },
           {
            id: "dadesCalibrades",
-           name: 'Dades Calibrades',
+           name: 'Calibrated Data',
            workspace: 'AirCrowd',
            layerName: 'dadesCalibrades',
            type: 'wms',
@@ -119,19 +122,32 @@ export const catalogData = [
             temporal: true,
             time: {
               default: "latest",
+              format: "date",
               available: [
-                "2019-07-10","2019-07-11","2019-07-15","2019-07-23","2019-07-26",
-                "2019-08-26","2019-08-28","2019-08-29","2019-08-30","2019-09-02",
-                "2019-09-04","2019-09-05","2019-09-06","2019-09-09","2019-09-13",
-                "2019-09-16","2019-09-18","2019-09-20","2019-11-21","2019-11-23",
-                "2019-12-12","2019-12-15","2020-03-05","2020-03-07","2020-09-21",
-                "2020-09-22","2020-09-28","2020-09-29","2020-10-05"
+                "2019-01-02","2019-01-04","2019-01-05","2019-01-06","2019-01-09","2019-01-10",
+                "2019-01-11","2019-01-12","2019-01-13","2019-01-15","2019-01-16","2019-01-18",
+                "2019-01-20","2019-01-21","2019-01-23","2019-01-25","2019-01-26","2019-01-28",
+                "2019-01-29","2019-01-30","2019-02-02","2019-02-04","2019-02-05","2019-02-06",
+                "2019-02-09","2019-02-10","2019-02-11","2019-02-12","2019-02-13","2019-02-15",
+                "2019-02-16","2019-02-18","2019-02-20","2019-02-21","2019-02-23","2019-02-25",
+                "2019-02-26","2019-02-28","2019-03-02","2019-03-04","2019-03-05","2019-03-06",
+                "2019-03-09","2019-03-10","2019-03-11","2019-03-12","2019-03-13","2019-03-15",
+                "2019-03-16","2019-03-18","2019-03-20","2019-03-21","2019-03-23","2019-03-25",
+                "2019-03-26","2019-03-28","2019-03-29","2019-03-30","2019-04-10","2019-04-11",
+                "2019-04-12","2019-04-15","2019-04-21","2019-04-23","2019-04-26","2019-05-10",
+                "2019-05-11","2019-05-12","2019-05-15","2019-05-21","2019-05-23","2019-05-26",
+                "2019-06-12","2019-06-15","2019-06-21","2019-06-23","2020-01-05","2020-01-07",
+                "2020-01-21","2020-01-22","2020-01-28","2020-01-30","2020-02-05","2020-02-07",
+                "2020-02-21","2020-02-22","2020-02-28","2020-03-05","2020-03-07","2020-03-21",
+                "2020-03-22","2020-03-28","2020-03-30","2020-04-05","2020-04-07","2020-04-21",
+                "2020-04-22","2020-04-28","2020-04-30","2020-05-05","2020-05-07","2020-05-21",
+                "2020-05-22","2020-05-28","2020-05-30","2020-06-05","2020-06-07","2020-06-30"
               ]
             },
             metadata: {
               base: {
-                title: 'Dades Calibrades',
-                description: 'Datos Calibrades',
+                title: 'Calibrated Data',
+                description: 'Calibrated Data',
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2019 - 2020',
@@ -144,7 +160,7 @@ export const catalogData = [
           },
           {
            id: "dadesDescarregades",
-           name: 'Dades Descarregades',
+           name: 'Downloaded Data',
            workspace: 'AirCrowd',
            layerName: 'dadesDescarregades',
            type: 'wms',
@@ -153,6 +169,7 @@ export const catalogData = [
             temporal: true,
             time: {
               default: "latest",
+              format: "date",
               available: [
                 "2019-07-10","2019-07-11","2019-07-15","2019-07-23","2019-07-26",
                 "2019-08-26","2019-08-28","2019-08-29","2019-08-30","2019-09-02",
@@ -164,8 +181,8 @@ export const catalogData = [
             },
             metadata: {
               base: {
-                title: 'Dades Descarregades',
-                description: 'Datos Descargados',
+                title: 'Downloaded Data',
+                description: 'Downloaded Data',
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2019 - 2020',
@@ -178,7 +195,7 @@ export const catalogData = [
           },
           {
             id: "dadesEstacio",
-           name: 'Dades Estacio',
+           name: 'Station Data',
            workspace: 'AirCrowd',
            layerName: 'dadesEstacio',
            type: 'wms',
@@ -187,6 +204,7 @@ export const catalogData = [
             temporal: true,
             time: {
               default: "latest",
+              format: "date",
               available: [
                 "2019-07-10","2019-07-11","2019-07-15","2019-07-23","2019-07-26",
                 "2019-08-26","2019-08-28","2019-08-29","2019-08-30","2019-09-02",
@@ -198,8 +216,8 @@ export const catalogData = [
             },
             metadata: {
               base: {
-                title: 'Dades Estación',
-                description: 'Datos Calculados',
+                title: 'Station Data',
+                description: 'Station Data',
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2019 - 2020',
@@ -212,7 +230,7 @@ export const catalogData = [
           },
           {
             id: "dadesInterpolades",
-            name: "Dades Interpolades",
+            name: "Interpolated Data",
             workspace: "AirCrowd",
             layerName: "dadesInterpolades",
             type: "wms",
@@ -221,6 +239,7 @@ export const catalogData = [
             temporal: true,
             time: {
               default: "latest",
+              format: "date",
               available: [
                 "2019-07-10","2019-07-11","2019-07-26","2019-11-21","2019-11-23",
                 "2019-12-12","2019-12-15","2020-03-05","2020-03-07","2020-09-21",
@@ -229,8 +248,8 @@ export const catalogData = [
             },
             metadata: {
               base: {
-                title: 'Dades Interpolades',
-                description: 'Datos Interpolades',
+                title: 'Interpolated Data',
+                description: 'Interpolated Data',
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2019 - 2020',
@@ -263,6 +282,7 @@ export const catalogData = [
             temporal: true,
             time: {
               default: "latest",
+              format: "year",
               available: [
                 "2018-07-01","2019-07-01","2020-07-01","2021-07-01",
                 "2022-07-01","2023-07-01","2024-07-01"
@@ -277,7 +297,7 @@ export const catalogData = [
             metadata: {
               base: {
                 title: 'Max NDVI / Min NDWI Dataset',
-                description: 'Dataset que contiene valores de NDVI y NDWI derivados de Sentienl-2 para el análisis del cultivo de arroz',
+                description: 'Dataset containing NDVI and NDWI values derived from Sentienl-2 for analysis of rice cultivation.',
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2018 - 2024',
@@ -288,7 +308,7 @@ export const catalogData = [
                 {label: 'Attributes', value:'NDVI Index, NDWI Index, TI NDVI'}
               ]
             }
-          }
+          },
         ]
       },
       {
@@ -305,6 +325,7 @@ export const catalogData = [
             temporal: true,
             time: {
               default: "latest",
+              format: "year",
               available: [
                 "2018-07-01","2019-07-01","2020-07-01","2021-07-01",
                 "2022-07-01","2023-07-01","2024-07-01"
@@ -317,7 +338,7 @@ export const catalogData = [
             metadata: {
               base: {
                 title: 'Yield Estimation',
-                description: 'Dataset que muestra la producción normalizada de arroz anual. Ademas de contener la variedad de arroz producida por parcela a partir de 2021',
+                description: 'Dataset showing normalized annual rice production. In addition to containing the variety of rice produced per plot as of 2021',
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2018 - 2024',
@@ -325,7 +346,7 @@ export const catalogData = [
               },
               details: [
                 {label:'Geometry Type', value: 'Polygon'},
-                {lable:'Attributes',value:'Yearly Production of crops (Normalised)'}
+                {label:'Attributes',value:'Yearly Production of crops (Normalised)'}
               ]
             }
           },
@@ -340,6 +361,7 @@ export const catalogData = [
             temporal: true,
             time: {
               default: "latest",
+              format: "year",
               available: [
                 "2022-07-01","2023-07-01","2024-07-01"
               ]
@@ -347,7 +369,7 @@ export const catalogData = [
             metadata: {
               base: {
                 title: 'Cultivation Technique',
-                description: 'Dataset que muestra la técnica que cultivo de arroz. Indundación (traditional) o Seco (dry).',
+                description: 'Dataset containing the rice cultivation technique. Dry or Traditional (flood)',
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2018 - 2024',

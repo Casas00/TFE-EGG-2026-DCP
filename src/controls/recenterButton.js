@@ -6,8 +6,8 @@ export function initHomeButton(map) {
   
   const botonCentrado = document.getElementById('centrado');
 
-  const homeCoords = [241015, 5074000];
-  const homeZoom = 11.5;
+  const homeCoords = [1500000, 6300000];
+  const homeZoom = 5;
 
   
   if (botonCentrado) { 

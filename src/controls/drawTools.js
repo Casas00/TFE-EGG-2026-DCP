@@ -13,7 +13,7 @@ export function initDrawTool(map, layerToClip = null) {
     const source = new VectorSource();
     const vectorLayer = new VectorLayer({
         source: source,
-        title: 'Mis Dibujos',
+        title: 'Geometries',
         style: new Style({
             fill: new Fill({ color: 'rgba(255,255,255,0.1)' }),
             stroke: new Stroke({ color: '#ffcc33', width: 2 }),
