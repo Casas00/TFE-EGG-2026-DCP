@@ -102,9 +102,9 @@ export function addLayer(layerConfig) {
 
     if (layerConfig.id === 'max_ndvi') {
         document.getElementById('ndvi-selector').classList.remove('hidden-control')
-    } if (layerConfig.id  === 'ndvi') {
-        document.getElementById('ndvi-selector').classList.remove('hidden-control')
-    };
+    } /*if (layerConfig.id === 'yield_est') {
+        document.getElementById('rice-selector').classList.remove('hidden-control')
+    };*/
 
 }
 
@@ -129,8 +129,8 @@ export function removeLayer(id) {
 
     if (id === 'max_ndvi' ) {
         document.getElementById('ndvi-selector').classList.add('hidden-control')
-    } if (id === 'ndvi') {
-        document.getElementById('ndvi-selector').classList.add('hidden-control')
+    } if (id === 'yield_est') {
+        document.getElementById('rice-selector').classList.add('hidden-control')
     };
 }
 

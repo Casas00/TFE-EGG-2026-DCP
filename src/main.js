@@ -67,17 +67,25 @@ initCatalogPanel();
 initGetFeatureInfo(map)
 
 // --- NDVI Dropdown ---
-const dropdown = document.getElementById('ndvi-dropdown')
+const ndvi_dropdown = document.getElementById('ndvi-dropdown')
 
-dropdown.addEventListener('change', e => {
+ndvi_dropdown.addEventListener('change', e => {
     const value = e.target.value;
     updateLayerVaribale('max_ndvi',value)
-    updateLayerVaribale('ndvi',value)
 })
+/*
+const rice_dropdown = document.getElementById('rice-dropdown')
+
+rice_dropdown.addEventListener('change', e => {
+    const value = e.target.value;
+    updateLayerVaribale('yield_est',value)
+})*/
 
 document.getElementById('metadata-close').onclick = () => {
     document.getElementById('metadata-popup').classList.add('hidden-control')
 }
+
+
 
 export function closeMainPanels() {
 
@@ -90,3 +98,18 @@ export function closeMainPanels() {
         layerSwitcher.classList.remove('shown')
     }
 }
+
+// ABOUT BUTTON
+const aboutBtn = document.getElementById('about-btn');
+const aboutPanel = document.getElementById('about-panel');
+
+aboutBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    aboutPanel.classList.toggle('hidden-control');
+})
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('#hidden-control')) {
+        aboutPanel.classList.add('hidden-control')
+    }
+})

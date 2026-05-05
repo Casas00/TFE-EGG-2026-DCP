@@ -38,12 +38,28 @@
 
         <!-- Institucional Logo-->
          <div id="header-logo">
-            <img src="/public/Logo_CTTC_v1_BLanc_TTE (1).png" alt="CTTC logo">
-         </div>
+            <a id="header-logo" href="https://www.cttc.cat" target="_blank" title="Ir a CTTC">
+                <img src="src\assets\img\Logo_CTTC_v1_BLanc_TTE (1).png" alt="CTTC logo">
+            </a>
+        </div>
+         
 
          <!-- Application Header -->
           <div id="header-title">
             <h1>CTTC Geodata Explorer</h1>
+          </div>
+
+          <div id="header-about">
+            <button id="about-btn" title="About the dev. Team">About</button>
+
+            <div id="about-panel" class="hidden-control">
+              <h3>CTTC Geodata Explorer</h3>
+              <p>Developed by the Geomatics RU & David Casas</p>
+              <p>Funded through CTTC intership program - Young Talent Research Stay Program</p>
+              <p>Centre Tecnològic de Telecomunicacions de Catalunya (CTTC)</p>
+
+            </div>
+
           </div>
 
       </header>
@@ -92,6 +108,14 @@
               <option value="ti_ndvi">TI NDVI</option>
           </select>
         </div>
+<!--
+        <div id="rice-selector" class="hidden-control">
+          <label>Variable:</label>
+          <select id="rice-dropdown">
+              <option value="yieldEsti">Yield Estimation</option>
+              <option value="riceVar">Rice Variety</option>
+          </select>
+        </div>-->
 
 
         <!-- Mouse Position Track,
