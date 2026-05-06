@@ -13,7 +13,7 @@ export function addLegend(layerConfig) {
         return;
     }
 
-    const legendUrl = `http://geoexplorer.cttc.es:8080/geoserver/${workspace}/wms?REQUEST=GetLegendGraphic&FORMAT=image/png&LAYER=${workspace}:${layerName}`;
+    const legendUrl = `https://geoexplorer.cttc.es:8443/geoserver/${workspace}/wms?REQUEST=GetLegendGraphic&FORMAT=image/png&LAYER=${workspace}:${layerName}`;
 
     const legendItem = document.createElement("div");
     legendItem.classList.add("legend-item");
