@@ -166,6 +166,20 @@ html, body, #app {
   line-height: 1.3;
 }
 
+.mouse-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #e87722;
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 2px;
+}
+
+.mouse-coords {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
 /* --- Control Dibujo --- */
 #draw-container {
   position: absolute;
@@ -227,7 +241,7 @@ html, body, #app {
 
 .ol-scale-line{
   left:10px;
-  bottom:55px;
+  bottom:75px;
 
   background: #3e3760;
   border: 1px solid #000000;
@@ -274,7 +288,7 @@ html, body, #app {
 #ndvi-selector {
     position: absolute;
     bottom: 80px;
-    left:10px;
+    left:700px;
     background: white;
     padding: 8px;
     border-radius: 8px;
@@ -419,7 +433,7 @@ html, body, #app {
 /* Contenedor */
 .layer-switcher {
   position: absolute;
-  top: 5px;
+  top: 92px;
   left: 10px;
   right:auto;
   font-family: "interstate", sans-serif;
@@ -627,7 +641,7 @@ html, body, #app {
 /*--- DATA GALLERY ---*/
 #data-container {
   position: absolute;
-  top: 92px;
+  top: 5px;
   left: 11px;
   z-index: 1000;
 }
@@ -757,6 +771,19 @@ html, body, #app {
 
 .catalog-layer button:hover {
   transform: scale(1.15);
+}
+
+.catalog-layer.layer-added {
+  border: 2px solid #8d8b55 ;
+}
+
+.catalog-layer.layer-added .add-btn{
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.catalog-layer.layer-added .layer-name{
+  font-weight: 500;
 }
 
 .layer-name  {

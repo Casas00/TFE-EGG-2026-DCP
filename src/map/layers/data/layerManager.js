@@ -5,6 +5,9 @@ import { addLegend,removeLegend, reorderLegends} from "../../../ui/legendManager
 import { initTimeSlider,showTimeSlider,hideTimeSlider, updateSliderDates } from "../../../ui/timeSlider.js";
 import { updateLegend } from "../../../ui/legendManager";
 import { applyClipToLayer } from "../../../controls/drawTools.js";
+import { getLayerExtent } from "../../../utils/getLayerExtent.js";
+import { map } from "../../../main.js";
+import {transformExtent} from 'ol/proj.js'; 
 
 
 const activeLayers = {}
@@ -16,7 +19,7 @@ function datesComaprative(a,b) {
     return a.every((val,i) => val === b[i])
 }
 
-export function addLayer(layerConfig) {
+export async function addLayer(layerConfig) {
 
     const {id, name, workspace, layerName, type, datatype} = layerConfig;
 
@@ -57,7 +60,7 @@ export function addLayer(layerConfig) {
         url: `/geoserver/${workspace}/wms`,
         params: params,
         crossOrigin: 'anonymous',
-        serverType: "geoserver"
+        serverType: 'geoserver'
     });
 
     const layer = new TileLayer({
@@ -105,6 +108,18 @@ export function addLayer(layerConfig) {
     } /*if (layerConfig.id === 'yield_est') {
         document.getElementById('rice-selector').classList.remove('hidden-control')
     };*/
+
+    const extent = await getLayerExtent(workspace, layerName);
+    console.log(extent)
+
+    if (extent) {
+        map.getView().fit(transformExtent(extent, 'EPSG:4326','EPSG:3857'), {
+            duration: 1200,
+            padding: [60,60,60,60]
+        });
+    }
+
+
 
 }
 

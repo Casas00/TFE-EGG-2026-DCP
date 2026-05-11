@@ -1,5 +1,5 @@
 import { catalogData } from "../map/layers/data/catalogConfig";
-import { addLayer, removeLayer } from "../map/layers/data/layerManager";
+import { addLayer, removeLayer, isLayerActive } from "../map/layers/data/layerManager";
 import { showMetaadata } from "../ui/metadataPanel";
 import { closeMainPanels } from "../main";
 
@@ -71,6 +71,7 @@ function generateCatalog(panel) {
 
         const layerRow = document.createElement("div");
         layerRow.classList.add("catalog-layer");
+        layerRow.dataset.layerId = layer.id
 
         const nameSpan = document.createElement("span");
         nameSpan.classList.add("layer-name");
@@ -93,7 +94,13 @@ function generateCatalog(panel) {
 
         addBtn.addEventListener('click', (e) => {
           e.stopPropagation();
+
+          if (isLayerActive(layer.id)) return;
+
           addLayer(layer)
+
+          layerRow.classList.add('layer-added');
+          addBtn.innerHTML = '<i class="fa-solid fa-check"></i>'
         })
 
         infoBtn.addEventListener('click', (e) => {
@@ -102,7 +109,11 @@ function generateCatalog(panel) {
 
         removeBtn.addEventListener('click', (e) => {
           e.stopPropagation();
+
           removeLayer(layer.id)
+
+          layerRow.classList.remove("layer-added")
+          addBtn.innerHTML = '<i class="fa-solid fa-plus"</i>'
         })
 
         actionsContainer.appendChild(addBtn);

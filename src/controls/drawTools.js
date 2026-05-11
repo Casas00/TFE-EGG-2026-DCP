@@ -18,7 +18,7 @@ export function initDrawTool(map, layerToClip = null) {
             fill: new Fill({ color: 'rgba(255,255,255,0.1)' }),
             stroke: new Stroke({ color: '#ffcc33', width: 2 }),
             image: new CircleStyle({ radius: 4, fill: new Fill({ color: '#ffcc33' }) }),
-        }),
+        })
     });
     map.addLayer(vectorLayer);
 

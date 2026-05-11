@@ -18,7 +18,7 @@ import { initGetFeatureInfo } from './ui/getFeatureInfo';
 import { updateLayerVaribale,dynamicGroup } from './map/layers/data/layerManager';
 
 // -- Creación del Mapa
-const map = createMap()
+export const map = createMap()
 
 // -- Coordenadas --
 map.addControl(mousePositionControl)

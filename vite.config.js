@@ -4,7 +4,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/geoserver': {
-        target: 'http://coastal-monitoring:8080',
+        target: 'https://geoexplorer.cttc.es:8443',
         changeOrigin: true,
         secure: false
       }

@@ -20,8 +20,13 @@ import { projection } from '../map/projection/projectionEPSG';
 
 export const mousePositionControl = new  MousePosition({
     coordinateFormat: function(coordinate) {
-        return `Long: ${coordinate[0].toFixed(5)}º <br> Lat: ${coordinate[1].toFixed(5)}º`
-
+    return `
+        <div class="mouse-title">WGS84 Coordinates</div>
+        <div class="mouse-coords">
+            <span>Long: ${coordinate[0].toFixed(5)}º</span><br>
+            <span>Lat: ${coordinate[1].toFixed(5)}º</span>
+        </div>
+        `;
     },
     projection: 'EPSG:4326',
     className: 'custom-mouse-position',
