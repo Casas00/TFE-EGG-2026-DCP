@@ -113,7 +113,7 @@ function generateCatalog(panel) {
           removeLayer(layer.id)
 
           layerRow.classList.remove("layer-added")
-          addBtn.innerHTML = '<i class="fa-solid fa-plus"</i>'
+          addBtn.innerHTML = '<i class="fa-solid fa-plus"></i>'
         })
 
         actionsContainer.appendChild(addBtn);

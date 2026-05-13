@@ -111,7 +111,7 @@ export const catalogData = [
               ]
             }
           },
-          {
+          /*{
            id: "dadesCalibrades",
            name: 'Calibrated Data',
            workspace: 'AirCrowd',
@@ -192,7 +192,7 @@ export const catalogData = [
                 {label: 'Geometry Type', value: 'Vector'}
               ]
             }
-          },
+          },*/
           {
             id: "dadesEstacio",
            name: 'Station Data',
@@ -228,7 +228,7 @@ export const catalogData = [
               ]
             }
           },
-          {
+          /*{
             id: "dadesInterpolades",
             name: "Interpolated Data",
             workspace: "AirCrowd",
@@ -259,14 +259,14 @@ export const catalogData = [
                 {label: 'Geometry Type', value: 'Raster'}
               ]
             }
-          }
+          }*/
         ]
       }
     ]
   },
 
   {
-    category: "Rice Monitoring",
+    category: "Rice Monitoring - Monitorizació de l'arrós",
     subcategories: [
       {
         name: "NDVI / NDWI",
@@ -297,7 +297,7 @@ export const catalogData = [
             metadata: {
               base: {
                 title: 'Max NDVI / Min NDWI Dataset',
-                description: 'Dataset containing NDVI and NDWI values derived from Sentienl-2 for analysis of rice cultivation.',
+                description: "Dataset containing NDVI and NDWI values derived from Sentienl-2 for analysis of rice cultivation.",
                 source: 'CTTC - Geomatics Department',
                 authorship: 'CTTC',
                 dates: '2018 - 2024',
@@ -312,11 +312,11 @@ export const catalogData = [
         ]
       },
       {
-        name: "Production",
+        name: "Production - Producció",
         layers: [
           {
             id: "yield_est",
-            name: "Yield Estimation",
+            name: "Yield Estimation - Estimació de producció",
             workspace: "Sen2Rice",
             layerName: "yield_estimation",
             type: "wms",
@@ -352,7 +352,7 @@ export const catalogData = [
           },
           {
             id: "cult_tech",
-            name: "Cultivation Technique",
+            name: "Cultivation Technique - Tècnica de cultiu",
             workspace: "Sen2Rice",
             layerName: "cultivation_technique",
             type: "wms",

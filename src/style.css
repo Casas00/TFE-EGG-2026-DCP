@@ -288,7 +288,7 @@ html, body, #app {
 #ndvi-selector {
     position: absolute;
     bottom: 80px;
-    left:700px;
+    left:45.5%;
     background: white;
     padding: 8px;
     border-radius: 8px;
@@ -348,6 +348,24 @@ html, body, #app {
     padding: 4px;
 }
 
+#metadata-close {
+  background-color: #3e3760;
+  color: white;
+
+  border: 2px black;
+  border-radius: 6px;
+
+  padding: 6px 12px;
+  margin-top: 12px;
+
+  cursor: pointer;
+
+  font-family: 'Interstate', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
 
 /* --- Pop-Up (Tabla) ---*/
 /* Estilos del Popup */

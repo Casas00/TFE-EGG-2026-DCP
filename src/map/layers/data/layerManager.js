@@ -105,9 +105,7 @@ export async function addLayer(layerConfig) {
 
     if (layerConfig.id === 'max_ndvi') {
         document.getElementById('ndvi-selector').classList.remove('hidden-control')
-    } /*if (layerConfig.id === 'yield_est') {
-        document.getElementById('rice-selector').classList.remove('hidden-control')
-    };*/
+    } 
 
     const extent = await getLayerExtent(workspace, layerName);
     console.log(extent)
@@ -144,9 +142,7 @@ export function removeLayer(id) {
 
     if (id === 'max_ndvi' ) {
         document.getElementById('ndvi-selector').classList.add('hidden-control')
-    } if (id === 'yield_est') {
-        document.getElementById('rice-selector').classList.add('hidden-control')
-    };
+    }
 }
 
 export function isLayerActive(id) {
