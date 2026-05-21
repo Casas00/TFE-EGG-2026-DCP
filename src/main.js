@@ -16,6 +16,7 @@ import { initBaseGallery } from './controls/galleryBaseMaps';
 import { initCatalogPanel } from './controls/catalogPanel';
 import { initGetFeatureInfo } from './ui/getFeatureInfo';
 import { updateLayerVaribale,dynamicGroup } from './map/layers/data/layerManager';
+import { initTutorial, startTutorial } from './ui/tutorial';
 
 // -- Creación del Mapa
 export const map = createMap()
@@ -113,3 +114,24 @@ document.addEventListener('click', (e) => {
         aboutPanel.classList.add('hidden-control')
     }
 })
+
+// ENDPOINT BUTTON
+const endpointBtn = document.getElementById('endpoints-btn')
+const endpointPanel = document.getElementById('endpoints-panel');
+
+endpointBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    endpointPanel.classList.toggle('hidden-control')
+})
+
+document.querySelectorAll(".endpoint-option").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const url = button.dataset.url;
+
+        window.open(url, "_blank");
+
+    });
+});

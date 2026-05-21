@@ -111,12 +111,107 @@ html, body, #app {
   color: #3e3760;
 }
 
+
 #header-about {
   position: absolute;
   top: 50%;
   right: 15px;
 
   transform: translateY(-50%);
+}
+
+#header-endpoints {
+  position: absolute;
+  top: 50%;
+  right: 90px;
+
+  transform: translateY(-50%);
+}
+
+#endpoints-btn {
+  background-color: #e87722;
+  color: white;
+  border: black;
+  border-radius: 6px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-family: "Interstate", sans-serif;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#endpoints-btn:hover {
+  background-color: #f28e36 ;
+  transform: scale(1.05);
+}
+
+#endpoints-panel {
+  position: absolute;
+  top: 48px;
+  right: 0;
+
+  background: white;
+  border-radius: 10px;
+
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  min-width: 220px;
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+
+  z-index: 3000;
+}
+
+.endpoint-option {
+  background-color: rgba(64,5,201,0.08);
+  color: black;
+
+  border: none;
+  border-radius: 8px;
+
+  padding: 10px 12px;
+
+  font-family: 'Interstate', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.endpoint-option:hover {
+  background-color: rgb(232,119,34);
+  color: white;
+}
+
+#header-tutorial {
+  position: absolute;
+  top: 50%;
+  right: 190px;
+
+  transform: translateY(-50%);
+}
+
+#tutorial-btn {
+  background-color: #e87722;
+  color: white;
+  border: black;
+  border-radius: 6px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-family: "Interstate", sans-serif;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#tutorial-btn:hover {
+  background-color: #f28e36 ;
+  transform: scale(1.05);
 }
 
 /* --- Configuración de los Botones de Zoom---*/
@@ -877,3 +972,93 @@ html, body, #app {
   margin-bottom: 4px
 }
 
+#tutorial-overlay {
+  position:fixed;
+  inset:0;
+
+  background: rgba(0,0,0,0.45);
+
+  width: 100vw;
+  height: 100vh;
+
+  display:flex;
+  justify-content: center;
+  align-items:center;
+
+  backdrop-filter: blur(2px);
+
+  z-index:5000;
+}
+
+#tutorial-overlay.hidden-control {
+  display: none !important;
+}
+
+#tutorial-popup {
+  position: relative;
+  width: 420px;
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  font-family: 'Interstate', sans-serif;
+}
+
+#tutorial-title {
+  margin-top: 0;
+  color: #3e3760;
+  font-size: 22px;
+}
+
+#tutorial-text {
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+#tutorial-controls {
+  display:flex;
+  justify-content: space-between;
+}
+
+#tutorial-controls button{
+  background-color: #3e3760;;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Interstate', sans-serif;
+}
+
+#tutorial-controls button:hover {
+  background-color: #f28e36 ;
+  transform: scale(1.05);
+}
+
+#tutorial-media-container {
+  width: 100%;
+
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#tutorial-media {
+  width: 100%;
+
+  max-width: 400px;
+
+  border-radius: 10px;
+
+  border: 1px solid rgba(0,0,0,0.08);
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+#tutorial-close {
+  position:absolute;
+  top:12px;
+  right: 12px;
+}

@@ -3,7 +3,7 @@ export const catalogData = [
     category: "Air Quality",
     subcategories: [
       {
-        name: "NO2",
+        name: "NO2 - Satellite",
         layers: [
           {
             id: "no2surface",
@@ -74,7 +74,7 @@ export const catalogData = [
         ]
       },
       {
-        name: "AirCrowd",
+        name: "NO2 - AirCrowd",
         layers: [
           {
             id: "dadesCalculades",
@@ -261,7 +261,42 @@ export const catalogData = [
             }
           }*/
         ]
-      }
+      },
+      {
+        name: "PM - Airbeam",
+        layers: [
+          {
+            id: "PM",
+            name: "AIRBEAM",
+            workspace: "AirCrowd",
+            layerName: "airbeam",
+            type: "wms",
+            datatype: "vector",
+
+            temporal: false,
+            time: {
+              default: "latest",
+              format: "date",
+              available: [
+                "2026-04-27"
+              ]
+            },
+            metadata: {
+              base: {
+                title: 'PM',
+                description: ' TBD ',
+                source: 'CTTC - Geomatics Department',
+                authorship: 'CTTC',
+                dates: '2023 - 2024',
+                crs: 'EPSG:4326 - WGS84'
+              },
+              details: [
+                {label: 'Geometry Type', value: 'vector'}
+              ]
+            }
+          }
+        ]
+      },
     ]
   },
 
