@@ -462,6 +462,167 @@ html, body, #app {
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
+/*-- Dataset Info Panel --*/
+#dataset-info-popup {
+    position: absolute;
+    top: 0.75%;
+    left: 370px;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 2000;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#dataset-info-close {
+  background-color: #3e3760;
+  color: white;
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin-top: 12px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  font-family: 'Interstate', sans-serif;
+}
+
+#dataset-info-close:hover{
+  background-color: #f28e36 ;
+  transform: scale(1.05);
+}
+
+.dataset-info-row {
+
+  margin: 8px 0;
+
+  padding: 8px 10px;
+
+  border-radius: 6px;
+
+  background-color: rgba(64,5,201,0.06);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.dataset-info-row {
+
+  margin: 8px 0;
+
+  padding: 8px 10px;
+
+  border-radius: 6px;
+
+  background-color: rgba(64,5,201,0.06);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.dataset-info-row i {
+  color: #3e3760;
+}
+
+#dataset-info-popup h2 {
+
+  font-size: 24px;
+
+  line-height: 1.2;
+
+  margin-bottom: 20px;
+}
+
+.dataset-section {
+
+  margin-top: 12px;
+
+  padding: 8px 10px;
+
+  border-radius: 8px;
+
+  background-color: rgba(64,5,201,0.035);
+}
+
+.dataset-section p,
+.dataset-section li {
+
+  color: #2f2f2f;
+
+  font-size: 13px;
+
+  line-height: 1.45;
+}
+
+.org-tag {
+
+  padding: 5px 10px;
+  border-radius: 18px;
+  background-color: rgba(64,5,201,0.08);
+  color: #3e3760;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.org-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.dataset-logos-container {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 10px;
+
+  justify-content: flex-start;
+
+  align-items: center;
+}
+
+.dataset-logo {
+
+  max-width: 100px;
+
+  max-height: 60px;
+
+  object-fit: contain;
+
+  background: white;
+
+  padding: 6px;
+
+  border-radius: 8px;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+  transition: transform 0.2s ease;
+}
+
+.dataset-logo:hover {
+  transform: scale(1.05);
+}
+
+
 /* --- Pop-Up (Tabla) ---*/
 /* Estilos del Popup */
 .ol-popup {

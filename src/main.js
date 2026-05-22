@@ -72,7 +72,7 @@ const ndvi_dropdown = document.getElementById('ndvi-dropdown')
 
 ndvi_dropdown.addEventListener('change', e => {
     const value = e.target.value;
-    updateLayerVaribale('max_ndvi',value)
+    updateLayerVaribale('ndvi_max',value)
 })
 /*
 const rice_dropdown = document.getElementById('rice-dropdown')

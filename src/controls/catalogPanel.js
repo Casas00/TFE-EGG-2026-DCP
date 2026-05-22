@@ -2,6 +2,7 @@ import { catalogData } from "../map/layers/data/catalogConfig";
 import { addLayer, removeLayer, isLayerActive } from "../map/layers/data/layerManager";
 import { showMetaadata } from "../ui/metadataPanel";
 import { closeMainPanels } from "../main";
+import { showDatasetInfo } from "../ui/datasetInfo";
 
 export function initCatalogPanel() {
 
@@ -51,6 +52,28 @@ function generateCatalog(panel) {
     const subContainer = document.createElement("div");
     subContainer.classList.add("subcategory-container");
     subContainer.style.display = "none";
+
+    if (category.datasetInfo) {
+
+    const datasetInfoRow = document.createElement("div");
+
+    datasetInfoRow.classList.add("dataset-info-row");
+
+    datasetInfoRow.innerHTML = `
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Dataset Information</span>
+    `;
+
+    datasetInfoRow.addEventListener('click', (e) => {
+
+        e.stopPropagation();
+
+        showDatasetInfo(category);
+
+    });
+
+    subContainer.appendChild(datasetInfoRow);
+    }
 
     category.subcategories.forEach(sub => {
 

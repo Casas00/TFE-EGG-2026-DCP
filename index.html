@@ -123,6 +123,17 @@
           <button id="metadata-close">Close</button>
         </div>
 
+        <!-- Dataset Info
+            Logic handled in src/ui/datasetInfo.js
+            Shows general inforamtion of every dataset  
+        -->
+        <div id="dataset-info-popup" class="hidden-control">
+          <div id="dataset-info-content"></div>
+          <button id="dataset-info-close">
+            Close
+          </button>
+        </div>
+
         <!-- Spectral Index | Attribute Selector, 
             logic handlede in src/map/layers/data/layerManager.js
             Available only in the "Rice Montioring - NDVI / NDWI" layer.
@@ -130,9 +141,9 @@
         <div id="ndvi-selector" class="hidden-control">
           <label>Variable:</label>
           <select id="ndvi-dropdown">
-              <option value="max_ndvi">Max NDVI</option>
-              <option value="min_ndwi">Min NDWI</option>
-              <option value="ti_ndvi">TI NDVI</option>
+              <option value="ndvi_max">Max NDVI</option>
+              <option value="ndwi_min">Min NDWI</option>
+              <option value="ndvi_ti">TI NDVI</option>
           </select>
         </div>
 <!--

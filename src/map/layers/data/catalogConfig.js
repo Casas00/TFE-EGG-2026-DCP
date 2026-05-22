@@ -1,6 +1,29 @@
 export const catalogData = [
   {
     category: "Air Quality",
+    datasetInfo: {
+      description: 
+        "Air Quality dataset generated from satellite and in-situ observation for atmospheric analysis in Catalonia.",
+      
+      project:
+        "AirCrowd",
+      
+      organisation: [
+        "CTTC"
+      ],
+      funding:
+        "CTTC Research Initiatives",
+      
+      publications: [
+        {
+          title: 'Air Quality Monitoring using Citizen Science',
+          url: 'https://...'
+        }
+      ],
+      logos: [
+        '/logos/cttc.png'
+      ]
+    },
     subcategories: [
       {
         name: "NO2 - Satellite",
@@ -302,6 +325,32 @@ export const catalogData = [
 
   {
     category: "Rice Monitoring - Monitorizació de l'arrós",
+    datasetInfo: {
+      description: 
+        "Sen2Rice is an initiative intended of transfering the latest techniques in remote sensing, improving the tracing in rice production at the Ebre Delta",
+      
+      project:
+        "Pla Estratègic de la PAC 2023-2027",
+      
+      organisation: [
+        "CTTC",
+        "Ministerio de Agricultura, Pesca y Alimentación",
+        "Generalitat de Catulunya"
+      ],
+      funding:
+        "CTTC Research Initiatives",
+      
+      publications: [
+        {
+          title: "Sen2Rice: Camps d'arròs a vista de satèl·lit",
+          url: 'https://sen2rice.cttc.cat/'
+        }
+      ],
+      logos: [
+        '/logos/cofi_UE.png',
+        '/logos/cttc.png'
+      ]
+    },
     subcategories: [
       {
         name: "NDVI / NDWI",
@@ -325,9 +374,9 @@ export const catalogData = [
             },
             styleConfig: {
               type:'byYear',
-              variable: 'max_ndvi',
-              options: ['max_ndvi','min_ndwi','ti_ndvi'],
-              pattern: '{year}_{variable}'
+              variable: 'ndvi_max',
+              options: ['ndvi_max','ndwi_min','ndvi_ti'],
+              pattern: '{variable}'
             },
             metadata: {
               base: {
@@ -368,7 +417,7 @@ export const catalogData = [
             },
             styleConfig: {
               type:'byYear',
-              pattern: '{year}_norm_yield'
+              pattern: 'cult_norm'
             },
             metadata: {
               base: {
