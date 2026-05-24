@@ -70,12 +70,21 @@ export function initGetFeatureInfo(map) {
                 .then(r => r.text())
                 .then(html => {
 
-                    if (!html || html.includes("no features")) {
-                        overlay.setPosition(undefined)
+                    const parser = new DOMParser();
+
+                    const doc = parser.parseFromString(html, 'text/html');
+
+                    const cells = doc.querySelectorAll('td');
+
+                    if (cells.length === 0) {
+
+                        overlay.setPosition(undefined);
+
                         return;
                     }
 
                     content.innerHTML = html;
+
                     overlay.setPosition(evt.coordinate);
 
                 })
