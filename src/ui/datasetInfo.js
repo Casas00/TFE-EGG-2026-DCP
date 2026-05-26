@@ -72,6 +72,24 @@ export function showDatasetInfo(dataset) {
         `;
     }
 
+    if (info.endpoints?.length) {
+        html += `
+            <div class="dataset-section">
+                <h3>Endpoints</h3>
+
+                <ul>
+                    ${info.endpoints.map(pub => `
+                        <li>
+                            <a href="${pub.url}" target="_blank">
+                                ${pub.service}
+                            </a>
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        `;
+    }
+
     if (info.logos?.length) {
 
     html += `

@@ -14,6 +14,20 @@ export const catalogData = [
       funding:
         "CTTC Research Initiatives",
       
+      endpoints: [
+        {
+          service: 'WMS - AirCrowd',
+          url: 'https://geoexplorer.cttc.es:8443/geoserver/Sen2Rice/wms?service=WMS&version=1.3.0&request=GetCapabilities'
+        },
+        {
+          service: 'WFS - AirCrowd',
+          url: "https://geoexplorer.cttc.es:8443/geoserver/Sen2Rice/wfs?service=WFS&version=1.3.0&version=1.3.0&request=GetCapabilities"
+        },
+        {
+          service: 'WCS - AirCrowd',
+          url: 'https://geoexplorer.cttc.es:8443/geoserver/Sen2Rice/wcs?service=WCS&request=GetCapabilities'
+        }
+      ],
       publications: [
         {
           title: 'Air Quality Monitoring using Citizen Science',
@@ -340,6 +354,16 @@ export const catalogData = [
       funding:
         "CTTC Research Initiatives",
       
+      endpoints: [
+        {
+          service: 'WMS - Sen2Rice',
+          url: 'https://geoexplorer.cttc.es:8443/geoserver/Sen2Rice/wms?service=WMS&version=1.3.0&request=GetCapabilities'
+        },
+        {
+          service: 'WFS - Sen2Rice',
+          url: "https://geoexplorer.cttc.es:8443/geoserver/Sen2Rice/wfs?service=WFS&version=1.3.0&version=1.3.0&request=GetCapabilities"
+        }
+      ],
       publications: [
         {
           title: "Sen2Rice: Camps d'arròs a vista de satèl·lit",

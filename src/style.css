@@ -120,80 +120,10 @@ html, body, #app {
   transform: translateY(-50%);
 }
 
-#header-endpoints {
-  position: absolute;
-  top: 50%;
-  right: 90px;
-
-  transform: translateY(-50%);
-}
-
-#endpoints-btn {
-  background-color: #e87722;
-  color: white;
-  border: black;
-  border-radius: 6px;
-  padding: 8px 15px;
-  cursor: pointer;
-  font-family: "Interstate", sans-serif;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-#endpoints-btn:hover {
-  background-color: #f28e36 ;
-  transform: scale(1.05);
-}
-
-#endpoints-panel {
-  position: absolute;
-  top: 48px;
-  right: 0;
-
-  background: white;
-  border-radius: 10px;
-
-  padding: 12px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  min-width: 220px;
-
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-
-  z-index: 3000;
-}
-
-.endpoint-option {
-  background-color: rgba(64,5,201,0.08);
-  color: black;
-
-  border: none;
-  border-radius: 8px;
-
-  padding: 10px 12px;
-
-  font-family: 'Interstate', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-
-  text-align: left;
-
-  cursor: pointer;
-
-  transition: all 0.2s ease;
-}
-
-.endpoint-option:hover {
-  background-color: rgb(232,119,34);
-  color: white;
-}
-
 #header-tutorial {
   position: absolute;
   top: 50%;
-  right: 190px;
+  right: 90px;
 
   transform: translateY(-50%);
 }
@@ -382,7 +312,7 @@ html, body, #app {
 
 #ndvi-selector {
     position: absolute;
-    bottom: 80px;
+    bottom: 10%;
     left:45.5%;
     background: white;
     padding: 8px;
