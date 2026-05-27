@@ -2,18 +2,27 @@ export const catalogData = [
   {
     category: "Air Quality",
     datasetInfo: {
-      description: 
-        "Air Quality dataset generated from satellite and in-situ observation for atmospheric analysis in Catalonia.",
-      
-      project:
-        "AirCrowd",
-      
+      description: [
+        {
+          text: "Air Quality dataset generated from satellite and in-situ observation for atmospheric analysis in Catalonia.",
+        }
+      ],
+    
+      project: [
+        {
+          text: 'AirCrowd'
+        }
+      ],
+  
       organisation: [
         "CTTC"
       ],
-      funding:
-        "CTTC Research Initiatives",
-      
+      funding: [
+        {
+          text: "CTTC Reasearch Initiatives",
+          image: 'logos/cttc.png'
+        }
+      ],
       endpoints: [
         {
           service: 'WMS - AirCrowd',
@@ -30,13 +39,10 @@ export const catalogData = [
       ],
       publications: [
         {
-          title: 'Air Quality Monitoring using Citizen Science',
-          url: 'https://...'
+          title: 'Assessing nitrogen dioxide monitoring techniques: a comparative analysis of Sentinel-5 Precursor satellite and ground measurements in Catalonia',
+          url: 'https://amt.copernicus.org/articles/18/5569/2025/'
         }
       ],
-      logos: [
-        '/logos/cttc.png'
-      ]
     },
     subcategories: [
       {
@@ -340,19 +346,37 @@ export const catalogData = [
   {
     category: "Rice Monitoring - Monitorizació de l'arrós",
     datasetInfo: {
-      description: 
-        "Sen2Rice is an initiative intended of transfering the latest techniques in remote sensing, improving the tracing in rice production at the Ebre Delta",
-      
-      project:
-        "Pla Estratègic de la PAC 2023-2027",
-      
+      description: [
+        {
+          text: "Sen2Rice is an initiative intended of transfering the latest techniques in remote sensing, improving the tracing in rice production at the Ebre Delta"
+        }
+      ],
+      project: [
+        {
+          text:'Sen2Rice',
+          image: '/logos/logo_sen2rice.jpg'
+        }
+      ],
       organisation: [
         "CTTC",
         "Ministerio de Agricultura, Pesca y Alimentación",
         "Generalitat de Catulunya"
       ],
-      funding:
-        "CTTC Research Initiatives",
+      funding: [
+        {
+          text: "Pla Estratègic de la PAC 2023-2027"
+        },
+        {
+          image: "/logos/Logotipo_del_Ministerio_de_Agricultura,_Pesca_y_Alimentación.svg.png"
+        },
+        {
+          image: "/logos/cofi_UE.png"
+        },
+        {
+          image: "/logos/gene.png"
+        }
+
+      ],
       
       endpoints: [
         {
@@ -369,10 +393,6 @@ export const catalogData = [
           title: "Sen2Rice: Camps d'arròs a vista de satèl·lit",
           url: 'https://sen2rice.cttc.cat/'
         }
-      ],
-      logos: [
-        '/logos/cofi_UE.png',
-        '/logos/cttc.png'
       ]
     },
     subcategories: [

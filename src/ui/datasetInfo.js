@@ -9,23 +9,52 @@ export function showDatasetInfo(dataset) {
     `;
 
      // DESCRIPTION
-    if (info.description) {
-        html += `
-            <div class="dataset-section">
-                <h3>Description</h3>
-                <p>${info.description}</p>
+    if (info.description?.length) {
+
+    html += `
+        <div class="dataset-section">
+            <h3>Description</h3>
+            <div class="dataset-rich-content">
+                ${info.description.map(item => `
+                    <div class="dataset-rich-item">
+                        ${item.text ? `
+                            <p>${item.text}</p>
+                        ` : ''}
+                        ${item.image ? `
+                            <img
+                                src="${item.image}"
+                                class="dataset-inline-image"
+                            />
+                        ` : ''}
+                    </div>
+                `).join('')}
             </div>
-        `;
+        </div>
+    `;
     }
 
     // PROJECT
-    if (info.project) {
+    if (info.project?.length) {
+
+        const projectTexts = info.project.filter(item => item.text);
+        const projectImages = info.project.filter(item => item.image);
+        
         html += `
-            <div class="dataset-section">
-                <h3>Project</h3>
-                <p>${info.project}</p>
+        <div class="dataset-section">
+            <h3>Project</h3>
+            ${projectTexts.map(item => `
+                <p>${item.text}</p>
+            `).join('')}
+            <div class="dataset-inline-images-container">
+                ${projectImages.map(item => `
+                    <img
+                        src="${item.image}"
+                        class="dataset-inline-image"
+                    />
+                `).join('')}
             </div>
-        `;
+        </div>
+    `;
     }
 
     // ORGANISATIONS
@@ -44,14 +73,31 @@ export function showDatasetInfo(dataset) {
     }
 
     // FUNDING
-    if (info.funding) {
-        html += `
-            <div class="dataset-section">
-                <h3>Funding</h3>
-                <p>${info.funding}</p>
+    if (info.funding?.length) {
+
+    const fundingTexts = info.funding
+        .filter(item => item.text);
+
+    const fundingImages = info.funding
+        .filter(item => item.image);
+
+    html += `
+        <div class="dataset-section">
+            <h3>Funding</h3>
+            ${fundingTexts.map(item => `
+                <p>${item.text}</p>
+            `).join('')}
+            <div class="dataset-inline-images-container">
+                ${fundingImages.map(item => `
+                    <img
+                        src="${item.image}"
+                        class="dataset-inline-image"
+                    />
+                `).join('')}
             </div>
-        `;
-    }
+        </div>
+    `;
+}
 
     // PUBLICATIONS
     if (info.publications?.length) {
