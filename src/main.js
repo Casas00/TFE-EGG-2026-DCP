@@ -70,17 +70,12 @@ initGetFeatureInfo(map)
 // --- NDVI Dropdown ---
 const ndvi_dropdown = document.getElementById('ndvi-dropdown')
 
-ndvi_dropdown.addEventListener('change', e => {
-    const value = e.target.value;
-    updateLayerVaribale('ndvi_max',value)
-})
-/*
-const rice_dropdown = document.getElementById('rice-dropdown')
+console.log(ndvi_dropdown);
 
-rice_dropdown.addEventListener('change', e => {
-    const value = e.target.value;
-    updateLayerVaribale('yield_est',value)
-})*/
+ndvi_dropdown.addEventListener('change', e => {
+
+    updateLayerVaribale('max_ndvi', e.target.value);
+});
 
 document.getElementById('metadata-close').onclick = () => {
     document.getElementById('metadata-popup').classList.add('hidden-control')

@@ -117,8 +117,6 @@ export async function addLayer(layerConfig) {
         });
     }
 
-
-
 }
 
 export function removeLayer(id) {
@@ -180,18 +178,19 @@ export function updateAllLayersTime(globalTime) {
 
 }
 
-export function updateLayerVaribale(layerId,variable) {
-    const layer = activeLayers[layerId]
-    if (!layer) return
+export function updateLayerVaribale(layerId, variable) {
 
-    const config = layer.get('config')
+    const layer = activeLayers[layerId];
+    if (!layer) return;
+
+    const config = layer.get('config');
     if (!config.styleConfig) return;
 
-    config.styleConfig.variable = variable
-    
+    config.styleConfig.variable = variable;
+
     const currentTime = layer.getSource().getParams().TIME;
 
-    updateAllLayersTime(currentTime)
+    updateAllLayersTime(currentTime);
 }
 
 function getClosestTime(targetDate,availableDates) {
